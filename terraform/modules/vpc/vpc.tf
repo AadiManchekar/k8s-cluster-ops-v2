@@ -21,7 +21,7 @@ resource "aws_subnet" "public_1" {
   map_public_ip_on_launch = true # Automatically assigns public IPs to instances launched in the subnet
   tags = {
     Name                                        = "${var.cluster_name}-public-1"
-    "kubernetes.io/cluster/${var.cluster_name}" = "shared"
+    "kubernetes.io/cluster/${var.cluster_name}" = "owned"
     "kubernetes.io/role/elb"                    = "1" # Subnet tag to construct load balancers that face the internet
   }
 }
@@ -33,7 +33,7 @@ resource "aws_subnet" "public_2" {
   map_public_ip_on_launch = true # Automatically assigns public IPs to instances launched in the subnet
   tags = {
     Name                                        = "${var.cluster_name}-public-2"
-    "kubernetes.io/cluster/${var.cluster_name}" = "shared"
+    "kubernetes.io/cluster/${var.cluster_name}" = "owned"
     "kubernetes.io/role/elb"                    = "1" # Subnet tag to construct load balancers that face the internet
   }
 }
@@ -45,7 +45,7 @@ resource "aws_subnet" "private_1" {
   availability_zone = var.availability_zone_1
   tags = {
     Name                                        = "${var.cluster_name}-private-1"
-    "kubernetes.io/cluster/${var.cluster_name}" = "shared"
+    "kubernetes.io/cluster/${var.cluster_name}" = "owned"
     "kubernetes.io/role/internal-elb"           = "1" # subnet tag to construct internal load balancers
   }
 }
@@ -56,7 +56,7 @@ resource "aws_subnet" "private_2" {
   availability_zone = var.availability_zone_2
   tags = {
     Name                                        = "${var.cluster_name}-private-2"
-    "kubernetes.io/cluster/${var.cluster_name}" = "shared"
+    "kubernetes.io/cluster/${var.cluster_name}" = "owned"
     "kubernetes.io/role/internal-elb"           = "1" # subnet tag to construct internal load balancers
   }
 }
@@ -97,7 +97,7 @@ resource "aws_route_table_association" "private_2" {
 }
 
 resource "aws_eip" "nat" {
-  vpc = true
+  domain = "vpc"
   tags = {
     Name = "${var.cluster_name}-nat-eip"
   }
