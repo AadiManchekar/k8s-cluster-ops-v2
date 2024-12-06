@@ -51,3 +51,21 @@ variable "availability_zone_2" {
   type        = string
   default     = "us-east-1b"
 }
+
+variable "eks_cluster_policy_arn" {
+  description = "Amazon's AmazonEKSClusterPolicy ARN"
+  type        = string
+  default     = "arn:aws:iam::aws:policy/AmazonEKSClusterPolicy"
+}
+
+variable "eks_worker_node_policy_arn" {
+  description = "Amazon's AmazonEKSWorkerNodePolicy ARN"
+  type        = string
+  default     = "arn:aws:iam::aws:policy/AmazonEKSWorkerNodePolicy"
+}
+
+variable "eks_cni_policy_arn" {
+  description = "Amazon's AmazonEKS_CNI_Policy ARN"
+  type        = string
+  default     = "arn:aws:iam::aws:policy/AmazonEKS_CNI_Policy"
+}
