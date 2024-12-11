@@ -58,3 +58,9 @@ resource "aws_iam_role_policy_attachment" "eks_cni_policy_attachment" {
   role       = aws_iam_role.eks_worker_node_role.name
   policy_arn = var.eks_cni_policy_arn
 }
+
+# Make sure to add it else worker nodes wont connect to eks control-plane
+resource "aws_iam_role_policy_attachment" "_container_registry_RO_policy_attachment" {
+  role       = aws_iam_role.eks_worker_node_role.name
+  policy_arn = var.ec2_container_registry_RO_policy_arn
+}

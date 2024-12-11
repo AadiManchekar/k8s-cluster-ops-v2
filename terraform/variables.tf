@@ -4,6 +4,12 @@ variable "cluster_name" {
   default     = "mocha"
 }
 
+variable "kubernetes_version" {
+  description = "EKS cluster k8s version"
+  type        = string
+  default     = "1.29"
+}
+
 variable "aws_region" {
   description = "AWS region"
   type        = string
@@ -68,4 +74,10 @@ variable "eks_cni_policy_arn" {
   description = "Amazon's AmazonEKS_CNI_Policy ARN"
   type        = string
   default     = "arn:aws:iam::aws:policy/AmazonEKS_CNI_Policy"
+}
+
+variable "ec2_container_registry_RO_policy_arn" {
+  description = "Amazon's AmazonEC2ContainerRegistryReadOnly Policy ARN"
+  type        = string
+  default     = "arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryReadOnly"
 }
