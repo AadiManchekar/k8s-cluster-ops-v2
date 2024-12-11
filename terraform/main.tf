@@ -32,3 +32,18 @@ module "iam" {
   ec2_container_registry_RO_policy_arn = var.ec2_container_registry_RO_policy_arn
 }
 
+module "eks" {
+  source = "./modules/eks"
+
+  cluster_name                     = var.cluster_name
+  kubernetes_version               = var.kubernetes_version
+  aws_region                       = var.aws_region
+  vpc_id                           = module.vpc.vpc_id
+  subnets                          = module.vpc.private_subnets
+  node_desired_capacity            = var.node_desired_capacity
+  node_max_capacity                = var.node_max_capacity
+  node_min_capacity                = var.node_min_capacity
+  node_instance_types              = var.node_instance_types
+  cluster_iam_master_node_role_arn = module.iam.eks_control_plane_role_arn
+  cluster_iam_worker_node_arn      = module.iam.eks_worker_node_role_arn
+}

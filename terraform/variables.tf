@@ -81,3 +81,22 @@ variable "ec2_container_registry_RO_policy_arn" {
   type        = string
   default     = "arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryReadOnly"
 }
+
+variable "node_desired_capacity" {
+  description = "desired nodes in eks cluster"
+  default     = 2
+}
+
+variable "node_max_capacity" {
+  description = "max nodes in eks cluster"
+  default     = 3
+}
+
+variable "node_min_capacity" {
+  description = "min nodes in eks cluster"
+  default     = 1
+}
+
+variable "node_instance_types" {
+  default = ["t3.large"]
+}
