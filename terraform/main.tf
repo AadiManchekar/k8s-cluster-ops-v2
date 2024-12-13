@@ -47,3 +47,11 @@ module "eks" {
   cluster_iam_master_node_role_arn = module.iam.eks_control_plane_role_arn
   cluster_iam_worker_node_arn      = module.iam.eks_worker_node_role_arn
 }
+
+module "helm" {
+  source = "./modules/helm"
+
+  metrics_chart_name      = var.metrics_chart_name
+  metrics_release_version = var.metrics_release_version
+  metrics_namespace       = var.metrics_namespace
+}

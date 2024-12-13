@@ -20,6 +20,18 @@ kubectl auth can-i "*" "*"
 
 kubectl get nodes --show-labels
 ```
+5. Check if metrics server is up
+```
+kubectl get pods -n kube-system
+```
+check if you can see a metrics-server pod
+```
+kubectl logs -n kube-system -f <metrics-server-pod-name> (for me it was: metrics-server-857b487695-5dhk6)
+```
+validate if u can get the top nodes
+```
+kubectl top pods -A
+```
 
 
 ## Challenges

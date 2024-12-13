@@ -100,3 +100,21 @@ variable "node_min_capacity" {
 variable "node_instance_types" {
   default = ["t3.large"]
 }
+
+variable "metrics_chart_name" {
+  description = "Name of the Helm chart"
+  type        = string
+  default     = "metrics-server"
+}
+
+variable "metrics_release_version" {
+  description = "Version of the Helm release"
+  type        = string
+  default     = "3.12.1"
+}
+
+variable "metrics_namespace" {
+  description = "Kubernetes namespace for the release"
+  type        = string
+  default     = "kube-system"
+}
