@@ -32,6 +32,7 @@ validate if u can get the top nodes
 ```
 kubectl top pods -A
 ```
+6. For HPA u can follow steps in K8s/HPA/README.md
 
 
 ## Challenges

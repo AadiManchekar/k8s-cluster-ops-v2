@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cpu-intensive-app
+  labels:
+    app: cpu-intensive
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: cpu-intensive
+  template:
+    metadata:
+      labels:
+        app: cpu-intensive
+    spec:
+      containers:
+      - name: cpu-intensive-app
+        image: aadimanchekar/cpu-intensive-app:latest # replace your-dockerhub-username
+        ports:
+        - name: http
+          containerPort: 8080
+        resources:
+          requests:
+            cpu: 50m # purposely set requests low so HPA can get triggered
+            memory: 128Mi
+          limits:
+            cpu: 150m
+            memory: 256Mi
