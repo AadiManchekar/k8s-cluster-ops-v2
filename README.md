@@ -34,7 +34,8 @@ validate if u can get the top nodes
 ```
 kubectl top pods -A
 ```
-6. For HPA u can follow steps in K8s/HPA/README.md
+6. For HPA demo u can follow steps in K8s/HPA/README.md
+7. For Cluster-autoscaler u can follow steps in K8s/Cluster-autoscaler/README.md
 
 
 ## Challenges

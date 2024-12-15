@@ -55,3 +55,13 @@ module "metrics_server" {
   metrics_release_version = var.metrics_release_version
   metrics_namespace       = var.metrics_namespace
 }
+
+module "cluster_autoscaler" {
+  source = "./modules/helm/cluster-autoscaler"
+
+  cluster_name               = var.cluster_name
+  aws_region                 = var.aws_region
+  cluster_autoscaler_SA      = var.cluster_autoscaler_SA
+  cluster_autoscaler_NS      = var.cluster_autoscaler_NS
+  cluster_autoscaler_version = var.cluster_autoscaler_version
+}

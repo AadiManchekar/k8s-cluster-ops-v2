@@ -1,0 +1,13 @@
+rbac:
+  serviceAccount:
+    name: "${service_account}"
+
+autoDiscovery:
+  clusterName: "${cluster_name}"
+
+awsRegion: "${aws_region}"
+
+extraArgs:
+  scale-down-unneeded-time: "5m"
+  scale-down-unready-time: "20m"
+  skip-nodes-with-system-pods: "false"

@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: resource-heavy
+  name: resource-heavy-app
+  namespace: default
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: resource-heavy
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: resource-heavy
+    spec:
+      affinity:
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+          - labelSelector:
+              matchExpressions:
+              - key: app
+                operator: In
+                values:
+                - resource-heavy
+            topologyKey: kubernetes.io/hostname
+      containers:
+      - image: aadimanchekar/cpu-intensive-app:latest
+        imagePullPolicy: Always
+        name: resource-heavy-app

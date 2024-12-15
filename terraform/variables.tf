@@ -118,3 +118,21 @@ variable "metrics_namespace" {
   type        = string
   default     = "kube-system"
 }
+
+variable "cluster_autoscaler_SA" {
+  description = "Cluster Autoscaler Service Account name"
+  type        = string
+  default     = "cluster-autoscaler"
+}
+
+variable "cluster_autoscaler_NS" {
+  description = "Cluster Autoscaler Namespace"
+  type        = string
+  default     = "kube-system"
+}
+
+variable "cluster_autoscaler_version" {
+  description = "Helm version of cluster autoscaler"
+  type        = string
+  default     = "9.43.2"
+}
