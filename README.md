@@ -16,6 +16,8 @@ make
 ```
 aws eks update-kubeconfig --region <aws-region> --name <cluster-name> --profile <profile-name> (here its mocha)
 
+aws eks update-kubeconfig --region us-east-1 --name mocha --profile mocha
+
 kubectl auth can-i "*" "*"
 
 kubectl get nodes --show-labels

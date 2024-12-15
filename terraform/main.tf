@@ -48,8 +48,8 @@ module "eks" {
   cluster_iam_worker_node_arn      = module.iam.eks_worker_node_role_arn
 }
 
-module "helm" {
-  source = "./modules/helm"
+module "metrics_server" {
+  source = "./modules/helm/metrics-server"
 
   metrics_chart_name      = var.metrics_chart_name
   metrics_release_version = var.metrics_release_version
