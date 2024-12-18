@@ -6,7 +6,9 @@ Pre-requisite: terraform CLI and aws CLI installed
 ```
 aws configure --profile=mocha
 ```
-2. Now follow the steps in terraform/backend/README.md
+2. Create a s3 bucket to store backend state, in this repo i have mocha-eks-state as my s3 bucket. (you can have versioning enabled but then make sure you enable AWS S3 lifecycle policies). Once u have s3 bucket replace "mocha-eks-state" with your s3 bucket name everywhere in main.tf
+Now you can probably use DynamoDB for state locking. But hey lets keep this project a bit simpler and straight to the point.
+
 3. To run the project
 ```
 cd terraform
